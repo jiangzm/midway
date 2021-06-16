@@ -30,6 +30,7 @@ import { createMidwayLogger } from './logger';
 import { MidwayRequestContainer } from './context/requestContainer';
 import { FunctionalConfiguration } from './functional/configuration';
 import { MidwayInformationService } from './service/informationService';
+import { HttpServiceFactory } from './service/httpServiceFactory';
 
 function buildLoadDir(baseDir, dir) {
   if (!isAbsolute(dir)) {
@@ -229,6 +230,8 @@ export abstract class BaseFramework<
   }
 
   public async loadExtension() {
+    // 注入 httpService
+    this.applicationContext.registerObject('httpService', HttpServiceFactory.create(this.getConfiguration('httpService')));
     // 切面支持
     await this.applicationContext.getAspectService().loadAspect();
     // 预加载模块支持
