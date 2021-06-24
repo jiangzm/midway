@@ -1,7 +1,7 @@
 import axios, { AxiosRequestConfig, AxiosInstance } from 'axios';
-import { providerWrapper } from '../context/providerWrapper';
+import { providerWrapper } from '@midwayjs/core/dist/context/providerWrapper';
 import { ScopeEnum } from '@midwayjs/decorator';
-import { IApplicationContext } from '../interface';
+import { IApplicationContext } from '@midwayjs/core/dist/interface';
 
 export class HttpServiceFactory {
 
